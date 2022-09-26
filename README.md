@@ -2,7 +2,7 @@
 
 Neste demo está um exemplo simples para receber notificação de eventos a partir do disparo de uma Trigger no firebird.
 
-A base dde dados que acompanha este demo foi criada com Firebird 2.5
+A base de dados que acompanha este demo foi criada com Firebird 2.5
 
 Nesta base há duas tabelas:  USUARIO e SINC_USER
 
