@@ -1,16 +1,16 @@
 # console_fbevent
 
-Neste demo está um exemplo simples para receber notificação de eventos a partir do disparo de uma Trigger no firebird.
+Neste demo escrita em .NET6 está um exemplo simples(console) para receber notificação de eventos a partir do disparo de uma Trigger no firebird.
 
 A base de dados que acompanha este demo foi criada com Firebird 2.5
 
 Nesta base há duas tabelas:  USUARIO e SINC_USER
 
-Para cada evento INSERT ou UPDATE na tabela USUARIO, uma trigger será acionada e gavará o ID inserido ou alterado na tabela SINC_USER.
+Para cada evento INSERT ou UPDATE na tabela USUARIO uma trigger(TR_USUARIO) será acionada e gavará o ID inserido ou alterado na tabela SINC_USER.
 
-Então é apartir desta tabela SINC_USER que o Firebird emitirá o evento.
+Então é apartir da trigger TR_USUARIO que o Firebird emitirá o evento.
 
-Este demo inicia uma aplicação console que fica escutando oevento "SINC_USUARIO" e quando o recebe, escreve um log na tela.
+Este demo inicia uma aplicação console que fica escutando o evento "SINC_USUARIO" e quando o recebe, escreve um log na tela.
 
 Numa aplicação real o programador, ao receber a notificação do evento, escolherá qual rotina deve ser executada.
 
