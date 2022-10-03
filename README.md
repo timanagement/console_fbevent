@@ -16,19 +16,30 @@ Numa aplicação real o programador, ao receber a notificação do evento, escol
 
 Abaixo está a trigger criada:
 
-
 CREATE OR ALTER TRIGGER TR_USUARIO FOR USUARIO
-ACTIVE AFTER INSERT OR UPDATE POSITION 0
-AS
-begin
-merge into SINC_USER s
-  using USUARIO u
-  on new.ID_USUARIO = s.ID_USUARIO
-  when matched then
-    UPDATE SET ID_USUARIO = new.ID_USUARIO, SINCRONIZADO = 'N', TIPO = 'U'
-  when not matched then
-    INSERT (ID, ID_USUARIO, SINCRONIZADO, TIPO)
-    VALUES (gen_id(gen_sinc_user_id, 1), new.ID_USUARIO, 'N', 'I');
 
+ACTIVE AFTER INSERT OR UPDATE POSITION 0
+
+AS
+
+begin
+
+merge into SINC_USER s
+
+  using USUARIO u
+  
+  on new.ID_USUARIO = s.ID_USUARIO
+  
+  when matched then
+  
+    UPDATE SET ID_USUARIO = new.ID_USUARIO, SINCRONIZADO = 'N', TIPO = 'U'
+    
+  when not matched then
+  
+    INSERT (ID, ID_USUARIO, SINCRONIZADO, TIPO)
+    
+    VALUES (gen_id(gen_sinc_user_id, 1), new.ID_USUARIO, 'N', 'I');
+    
     POST_EVENT 'SINC_USUARIO';
+    
 end
